@@ -1,0 +1,36 @@
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/persistence/persistence_2_1.xsd">
+
+	<persistence-unit name="hibernate-jpa-mysql"
+		transaction-type="JTA">
+
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+
+		<jta-data-source>java:jboss/dashboard</jta-data-source>
+
+		<properties>
+			<!-- Propriedades padrões do JPA 2.1 -->
+			<!-- <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" 
+				/> -->
+			<!-- <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/carrinho_compra" 
+				/> -->
+			<!-- <property name="javax.persistence.jdbc.user" value="root" /> -->
+			<!-- <property name="javax.persistence.jdbc.password" value="root" /> -->
+
+			<!-- Propriedades específicas do hibernate -->
+
+			<property name="hibernate.archive.autodetection" value="class" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<!-- <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" 
+				/> --> <!-- cria as tabelas do banco no formato MyIsam -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" /> <!-- cria as tabelas do banco no formato InnoDB -->
+			<property name="hibernate.ejb.naming_strategy" value="org.hibernate.cfg.ImprovedNamingStrategy" /> <!-- cria as tabelas do banco com padronização de nomes em minúsculo independente 
+				do sistema operacional -->
+
+		</properties>
+	</persistence-unit>
+</persistence>

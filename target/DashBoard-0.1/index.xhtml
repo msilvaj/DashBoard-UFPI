@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+</h:head>
+<h:body>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/highcharts-more.js"></script>
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="north" resizable="true">
+			<p:link value="DASHBOARD" href="/login.xhtml"></p:link>
+		</p:layoutUnit>
+		<p:layoutUnit position="center" resizable="true">
+			<p:tabView>
+				<p:tab title="Indicadores">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dictum nec neque id molestie. Curabitur metus massa, facilisis quis molestie ut, pharetra sed erat. Integer tincidunt erat enim, ac varius libero egestas tincidunt. In libero leo, varius sed consectetur non, luctus id sem. Aenean ac arcu a augue aliquam rutrum. Praesent nec luctus nulla. Suspendisse cursus nisl nulla. Suspendisse vel porta arcu, vel ullamcorper turpis. Vestibulum lacinia id nisi sit amet rhoncus. Etiam efficitur rhoncus ipsum posuere faucibus. Vestibulum purus lorem, commodo non nisi vulputate, convallis lacinia orci. Ut ipsum ex, tempus vitae tincidunt at, hendrerit nec lorem. Mauris tellus orci, mattis ut turpis eget, congue ultricies quam. Quisque posuere commodo tellus, ornare maximus justo venenatis ac. Aliquam posuere neque et ultricies pellentesque. Vivamus auctor, velit non suscipit dapibus, risus nulla feugiat est, eget sagittis lectus orci ac tortor. 
+				Sed mollis suscipit tempor. Sed elementum purus vel nulla molestie convallis. Suspendisse sit amet eleifend turpis. Donec non eros ipsum. Mauris quis est ac nisl varius tincidunt. Aliquam eu est ex. Vivamus gravida justo massa, sit amet pretium justo malesuada sed. Quisque eget vulputate ipsum. Nam venenatis, quam a euismod pellentesque, magna nunc malesuada nibh, tristique euismod diam est nec eros. Nulla et augue nisi. Sed et nunc lectus. Phasellus posuere ex eros, nec convallis purus sodales sed. 
+				Fusce volutpat velit eget magna consequat venenatis. Phasellus sit amet mi blandit, rhoncus justo ut, fringilla sapien. Aenean aliquam malesuada metus, id lacinia nisl sagittis eget. Nam et risus id nisl sagittis sodales. Ut ultrices ut tortor vel fermentum. Donec in ligula euismod, pulvinar justo at, varius massa. Nam lacus lorem, mollis id pulvinar sed, consequat et enim. Vestibulum vel auctor nulla. Donec blandit finibus magna nec dictum. Aenean iaculis viverra lectus, quis ultrices leo consequat id. Integer at enim ut mi viverra ultrices. Phasellus in arcu nibh. Cras convallis posuere neque, nec rutrum nibh sodales id. Aenean quis dictum libero, in aliquam sapien. Praesent semper vitae tortor ut tempus. Vestibulum dignissim fringilla imperdiet. 
+				</p:tab>
+				<p:tab title="Gráficos">
+					<!-- 					<p:dataTable value="#{professorBean.todosProfessores()}" -->
+					<!-- 						var="professor" rows="5" paginator="true"> -->
+					<!-- 						<p:column headerText="ID" sortBy="#{professor.id}"> -->
+					<!-- 							<h:outputText id="elem2" value="#{professor.id}" /> -->
+					<!-- 						</p:column> -->
+					<!-- 						<p:column headerText="Nome" sortBy="#{professor.nomerh}"> -->
+					<!-- 							<h:outputText id="elem1" value="#{professor.nomerh}" /> -->
+					<!-- 						</p:column> -->
+					<!-- 					</p:dataTable> -->
+					<div id="container">
+						<h:inputHidden value="#{professorBean.chartTodosCampus(Teresina)}" />
+						<h:outputScript>
+							$(function () {
+								$('#container').highcharts({ 
+								    title: { text: '<h:outputText
+								value="#{professorBean.chart.title}" />' },
+								    chart: { type: 'pie',
+								    		 height: 900,
+								    		 width: 1440,
+								    		 margin: [0,0,0,0] },
+								    series: [{
+										name: '<h:outputText value="#{professorBean.chart.name}" />',
+										colorByPoint: true,
+										data: <h:outputText value="#{professorBean.chart.data}" />
+									}]
+								}); 
+							});
+						</h:outputScript>
+					</div>
+					<div id="container2">
+						<h:inputHidden value="#{producaoBean.chartTodaProducao()}" />
+						<h:outputScript>
+							$(function () {
+								$('#container2').highcharts({ 
+								    title: { text: '<h:outputText
+								value="#{producaoBean.chart.title}" />' },
+								    chart: { type: 'column',
+								    		 height: 900,
+								    		 width: 1440,
+								    		 margin: [0,0,0,0] },
+								    series: [{
+										name: '<h:outputText value="#{producaoBean.chart.name}" />',
+										colorByPoint: true,
+										data: <h:outputText value="#{producaoBean.chart.data}" />
+									}]
+								}); 
+							});
+						</h:outputScript>
+					</div>
+					<div id="container3">
+						<h:inputHidden value="#{projetoBean.chartNaturezaDiferente()}" />
+						<h:outputScript>
+							$(function () {
+								$('#container3').highcharts({ 
+								    title: { text: '<h:outputText
+								value="#{projetoBean.chart.title}" />' },
+								    chart: { type: 'waterfall',
+								    		 height: 900,
+								    		 width: 1440,
+								    		 margin: [0,0,0,0] },
+								    series: [{
+										name: '<h:outputText value="#{projetoBean.chart.name}" />',
+										colorByPoint: true,
+										data: <h:outputText value="#{projetoBean.chart.data}" />
+									}]
+								}); 
+							});
+						</h:outputScript>
+					</div>
+					
+				</p:tab>
+			</p:tabView>
+			<!-- 			<ui:insert name="conteudo"> -->
+
+			<!-- 			</ui:insert> -->
+		</p:layoutUnit>
+		<p:layoutUnit position="south" resizable="true">
+			Universidade Federal do Piauí - Desenvolvido por João Guilherme Cavalcanti Costa
+		</p:layoutUnit>
+	</p:layout>
+</h:body>
+</html>

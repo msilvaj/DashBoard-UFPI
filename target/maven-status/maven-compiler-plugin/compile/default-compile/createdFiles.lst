@@ -1,0 +1,8 @@
+models\Projeto.class
+charts\Chart.class
+charts\Data.class
+managedBeans\ProducaoBean.class
+managedBeans\ProjetoBean.class
+models\ProducaoCientifica.class
+managedBeans\ProfessorBean.class
+models\Professor.class
